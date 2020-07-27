@@ -4,6 +4,11 @@ function connectws(){
     wss=new WebSocket(serversite.value);
     wss.onmessage=function(msg){
         messagecontrol.innerHTML+="<br>"+msg.data;
+        if("Notification" in Window){
+            if(Notification.permission === "granted"){
+                msNotify = new Notification("新消息！",{body:msg.data});
+            }
+        }
         console.log(msg.data);
     }
 }
