@@ -107,7 +107,7 @@ function connectws(){
     var messagecontrol=document.getElementById("messagecontrol");
     wss=new WebSocket(serversite.value);
     wss.onmessage=function(msg){
-        messagecontrol.innerHTML+="<br>"+msg.data;
+        messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
         if("Notification" in Window){
             alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
         }
