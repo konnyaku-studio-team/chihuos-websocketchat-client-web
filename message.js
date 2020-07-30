@@ -114,14 +114,14 @@ function connectws(){
         else
         {
             if(Notification.permission === "granted"){
-                msNotify = new Notification("新消息！",{body:msg.data});
+                msNotify = new Notification("新消息！",{body:base64.decode(msg.data)});
             }
             else
             {
                 if(Notification.permission === "default"){
                     Notification.requestPermission(function(){
                         if(Notification.permission === "granted"){
-                            msNotify = new Notification("新消息！",{body:msg.data});
+                            msNotify = new Notification("新消息！",{body:base64.decode(msg.data)});
                         }
                     });
                 }
