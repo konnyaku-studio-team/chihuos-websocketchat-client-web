@@ -1,3 +1,10 @@
 #insertmessage{
-    
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    border-top:3px red solid;
+    width:100%;
+    max-height: 10%;
+    padding-left: 16px;
+    padding-right: 16px;
 }
