@@ -9,7 +9,7 @@
         <!-- <div id="black-back"></div>      -->
         <div id="connectwindow">
             <div id="serversettings">
-                <span id="exit" onclick="hiddenwindow()">X</span>
+                <span id="exit" onclick="hiddenwindow()" title="关闭">X</span>
                 <h1 id="tips-connectserver" class="t-center p-l5px">连接服务器</h1>
                 <span id="tips-serversite">服务器地址</span>
                 <br>
@@ -25,8 +25,9 @@
                 以下是某些聊天信息:
             </div>
             <div id="insertmessage">
-                输入聊天内容:<textarea id="messageinput" name="mi"></textarea>
+                输入聊天内容:<input id="messageinput" name="mi" >
                 <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
+                <button onclick="openwindow()" value="commit" id="commitbutton">连接服务器</button>
             </div>
         </div>
         <script src="message.js" defer></script>

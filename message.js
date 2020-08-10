@@ -103,10 +103,12 @@ function Base64() {
 var base64=new Base64();
 
 function connectws(){
+    console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
     var messagecontrol=document.getElementById("messagecontrol");
     wss=new WebSocket(serversite.value);
     wss.onmessage=function(msg){
+        console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
         messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
         if("Notification" in Window){
             alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
@@ -131,11 +133,17 @@ function connectws(){
     }    
 }
 function commitws(){
-   var messageinput=document.getElementById("messageinput");
-   wss.send(base64.encode(messageinput.value)); 
+    console.debug("[debug]["+new Date()+"]运行了commitws函数！");
+    var messageinput=document.getElementById("messageinput");
+    wss.send(base64.encode(messageinput.value)); 
 }
 function hiddenwindow(){
     console.debug("[debug]["+new Date()+"]运行了hiddenwindow函数！");
     var connectwindow=document.getElementById("connectwindow");
     connectwindow.style.display="none";
+}
+function openwindow(){
+    console.debug("[debug]["+new Date()+"]运行了openwindow函数！");
+    var connectwindow=document.getElementById("connectwindow");
+    connectwindow.style.display="block";
 }
