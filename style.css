@@ -8,7 +8,20 @@
     padding:8px;
     margin: 0px;
 }
-#connectwindow{
+.mask{ 
+    content: "";
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.9);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    z-index: 2;
+    /* display:none; */
+} 
+.window{
     background-color:#008899;
     position: absolute;
     width:480px;
@@ -18,12 +31,13 @@
     bottom: 0;
     top:0;
     margin: auto;
+    z-index: 2;
     /*display: none; */
 }
 .t-center{
     text-align: center;
 }
-#exit{
+.exit-button{
     color:#FF0000;
     position: absolute;
     right:10px;
@@ -37,19 +51,11 @@
 #tips-serversite{
     padding-left:40px;
 }
-/* #black-back{
-    width:100%;
-    height:100%;
-    color:rgba(0,0,0,0.95);
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top:0;
-    margin: auto;
-} */
 #messageinput{
     width:80%;
     height:5%;
     margin: 0px;
+}
+#container{
+    z-index: -1;
 }

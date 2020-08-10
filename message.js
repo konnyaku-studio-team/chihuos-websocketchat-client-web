@@ -104,7 +104,9 @@ var base64=new Base64();
 
 function connectws(){
     var connectwindow=document.getElementById("connectwindow");
-    connectwindow.style.display="none";
+    var mask=document.getElementById("mask");
+    connectwindow.style.display="block";
+    mask.style.display="block";   
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
     var messagecontrol=document.getElementById("messagecontrol");
@@ -142,10 +144,14 @@ function commitws(){
 function hiddenwindow(){
     console.debug("[debug]["+new Date()+"]运行了hiddenwindow函数！");
     var connectwindow=document.getElementById("connectwindow");
+    var mask=document.getElementById("mask");
     connectwindow.style.display="none";
+    mask.style.display="none";
 }
 function openwindow(){
     console.debug("[debug]["+new Date()+"]运行了openwindow函数！");
     var connectwindow=document.getElementById("connectwindow");
+    var mask=document.getElementById("mask");
     connectwindow.style.display="block";
+    mask.style.display="block";
 }
