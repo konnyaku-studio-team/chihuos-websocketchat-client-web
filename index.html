@@ -5,15 +5,21 @@
         <link  rel="stylesheet" href="style.css">
         <title>Chihuo's Websocket Chat Web App</title>
     </head>
-    <body>
+    <body>      
+        <div id="connectwindow">
+            <div id="serversettings">
+                <span id="exit" onclick="hiddenwindow()">X</span>
+                <h1>连接服务器</h1>
+                服务器地址:<input id="serversite" name="ss" type="text" value="输入以ws://或者wss://开头的链接"><br>
+                <button onclick="connectws()" value="connect" id="connectbutton">连接</button>
+            </div> 
+        </div>
        <div id="container">
-            <div id="serversettings">输入服务器网址(用ws://或wss://开头)<textarea id="serversite" name="ss"></textarea><button onclick="connectws()" value="connect" id="connectbutton">连接</button>
-</div> 
             <div id="messagecontrol">
                 以下是某些聊天信息:
             </div>
             <div id="insertmessage">输入聊天内容:<textarea id="messageinput" name="mi"></textarea><button onclick="commitws()" value="commit" id="commitbutton">提交</button></div>
         </div>
-        <script src="message.js"></script>
+        <script src="message.js" defer></script>
     </body>
 </html>

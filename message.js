@@ -134,3 +134,7 @@ function commitws(){
    var messageinput=document.getElementById("messageinput");
    wss.send(base64.encode(messageinput.value)); 
 }
+function hiddenwindow(){
+    var connectwindow=document.getElementById("connectwindow");
+    connectwindow.display="none";
+}
