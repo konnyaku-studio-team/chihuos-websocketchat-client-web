@@ -24,8 +24,6 @@
 .window{
     background-color:#008899;
     position: absolute;
-    width:480px;
-    height:200px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -33,6 +31,16 @@
     margin: auto;
     z-index: 2;
     /*display: none; */
+}
+#connectwindow{
+    width:480px;
+    height:200px;
+}
+#aboutwindow{
+    width:480px;
+    height:480px;
+    display: none;
+    text-align: center;
 }
 .t-center{
     text-align: center;
@@ -58,4 +66,9 @@
 }
 #container{
     z-index: -1;
+}
+#about-cwcimg{
+    width:240px;
+    height:120px;
+    text-align: center;
 }

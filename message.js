@@ -112,6 +112,7 @@ function connectws(){
         alert("服务器连接错误！错误原因："+wse);
     }
     wss.onopen=function(){
+        alert("连接成功！");
         wss.onmessage=function(msg){
             console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
             messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
@@ -147,16 +148,16 @@ function commitws(){
     var messageinput=document.getElementById("messageinput");
     wss.send(base64.encode(messageinput.value)); 
 }
-function hiddenwindow(){
+function hiddenwindow(wnm){
     console.debug("[debug]["+new Date()+"]运行了hiddenwindow函数！");
-    var connectwindow=document.getElementById("connectwindow");
+    var connectwindow=document.getElementById(wnm);
     var mask=document.getElementById("mask");
     connectwindow.style.display="none";
     mask.style.display="none";
 }
-function openwindow(){
+function openwindow(wnm){
     console.debug("[debug]["+new Date()+"]运行了openwindow函数！");
-    var connectwindow=document.getElementById("connectwindow");
+    var connectwindow=document.getElementById(wnm);
     var mask=document.getElementById("mask");
     connectwindow.style.display="block";
     mask.style.display="block";
