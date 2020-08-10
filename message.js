@@ -105,8 +105,8 @@ var base64=new Base64();
 function connectws(){
     var connectwindow=document.getElementById("connectwindow");
     var mask=document.getElementById("mask");
-    connectwindow.style.display="block";
-    mask.style.display="block";   
+    connectwindow.style.display="none";
+    mask.style.display="none";   
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
     var messagecontrol=document.getElementById("messagecontrol");
