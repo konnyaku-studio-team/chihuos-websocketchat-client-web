@@ -6,7 +6,11 @@
         <title>Chihuo's Websocket Chat Web App</title>
     </head>
     <body>
-        <div id="mask" class="mask"></div>     
+        <div id="mask" class="mask"></div>
+        <div id="iewindow" class="window">
+            <h1 id="ie-reject">你是IE浏览器！</h1>
+            <h1 id="ie-reject-desc">对不起，本页面不支持使用Internet Explorer(IE)进行浏览。请您更换Google Chrome,Firefox或者其他现代浏览器</h1>
+        </div>     
         <div id="connectwindow" class="window">
             <div id="serversettings">
                 <span id="exit" class="exit-button" onclick="hiddenwindow('connectwindow')" title="关闭">X</span>
@@ -32,6 +36,16 @@
             <div id="author">作者:chihuo2104</div>
             <div id="github-ch"><a href="https://github.com/chihuo2104/">GitHub账号</a></div>
         </div>
+        <!--[if IE]>
+            <script>
+                var connectwindow=document.getElementById("connectwindow");
+                connectwindow.style.display="none";
+                var iewindow=document.getElementById("iewindow");
+                var mask=document.getElementById("mask");
+                iewindow.style.display="block";
+                alert("ie");
+            </script>
+        <![endif]-->
         <div id="container">
             <div id="messagecontrol">
                 以下是某些聊天信息:

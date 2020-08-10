@@ -72,3 +72,9 @@
     height:120px;
     text-align: center;
 }
+#iewindow{
+    width:384px;
+    height:256px;
+    text-align: center;
+    display: none;
+}
