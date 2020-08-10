@@ -102,37 +102,43 @@ function Base64() {
 }
 var base64=new Base64();
 
-function connectws(){
-    var connectwindow=document.getElementById("connectwindow");
-    var mask=document.getElementById("mask");
-    connectwindow.style.display="none";
-    mask.style.display="none";   
+function connectws(){   
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
     var messagecontrol=document.getElementById("messagecontrol");
-    wss=new WebSocket(serversite.value);
-    wss.onmessage=function(msg){
-        console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
-        messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
-        if("Notification" in Window){
-            alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
-        }
-        else
-        {
-            if(Notification.permission === "granted"){
-                msNotify = new Notification("新消息！",{body:base64.decode(msg.data)});
+    try{
+        wss=new WebSocket(serversite.value);
+    }catch(wse){
+        alert("服务器连接错误！错误原因："+wse);
+    }
+    wss.onopen=function(){
+        wss.onmessage=function(msg){
+            console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
+            messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
+            if("Notification" in Window){
+                alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
             }
             else
             {
-                if(Notification.permission === "default"){
-                    Notification.requestPermission(function(){
-                        if(Notification.permission === "granted"){
-                            msNotify = new Notification("新消息！",{body:base64.decode(msg.data)});
-                        }
-                    });
+                if(Notification.permission === "granted"){
+                    msNotify = new Notification("新消息！",{body:base64.decode(msg.data)});
                 }
-            }
-        }
+                else
+                {
+                    if(Notification.permission === "default"){
+                        Notification.requestPermission(function(){
+                            if(Notification.permission === "granted"){
+                                msNotify = new Notification("新消息！",{body:base64.decode(msg.data)});
+                            }
+                        });
+                    }
+                }
+            };
+    };
+    var connectwindow=document.getElementById("connectwindow");
+    var mask=document.getElementById("mask");
+    connectwindow.style.display="none";
+    mask.style.display="none";
     console.log(msg.data);
     }    
 }
