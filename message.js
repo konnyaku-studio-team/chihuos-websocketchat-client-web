@@ -103,6 +103,8 @@ function Base64() {
 var base64=new Base64();
 
 function connectws(){
+    var connectwindow=document.getElementById("connectwindow");
+    connectwindow.style.display="none";
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
     var messagecontrol=document.getElementById("messagecontrol");
