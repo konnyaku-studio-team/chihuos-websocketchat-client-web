@@ -9,16 +9,24 @@
         <div id="connectwindow">
             <div id="serversettings">
                 <span id="exit" onclick="hiddenwindow()">X</span>
-                <h1>连接服务器</h1>
-                服务器地址:<input id="serversite" name="ss" type="text" value="输入以ws://或者wss://开头的链接"><br>
-                <button onclick="connectws()" value="connect" id="connectbutton">连接</button>
+                <h1 id="tips-connectserver" class="t-center p-l5px">连接服务器</h1>
+                <span id="tips-serversite">服务器地址</span>
+                <br>
+                <div id="connectfrom" class="t-center p-5px">
+                    <input id="serversite" name="ss" type="text" placeholder="输入以ws://或者wss://开头的链接">
+                    <br><br>
+                    <button onclick="connectws()" value="connect" id="connectbutton" class="t-center p-5px">连接</button>
+                </div>
             </div> 
         </div>
        <div id="container">
             <div id="messagecontrol">
                 以下是某些聊天信息:
             </div>
-            <div id="insertmessage">输入聊天内容:<textarea id="messageinput" name="mi"></textarea><button onclick="commitws()" value="commit" id="commitbutton">提交</button></div>
+            <div id="insertmessage">
+                输入聊天内容:<textarea id="messageinput" name="mi"></textarea>
+                <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
+            </div>
         </div>
         <script src="message.js" defer></script>
     </body>
