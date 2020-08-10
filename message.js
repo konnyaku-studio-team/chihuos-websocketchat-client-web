@@ -135,6 +135,7 @@ function commitws(){
    wss.send(base64.encode(messageinput.value)); 
 }
 function hiddenwindow(){
+    console.debug("[debug]["+new Date()+"]运行了hiddenwindow函数！");
     var connectwindow=document.getElementById("connectwindow");
-    connectwindow.display="none";
+    connectwindow.style.display="none";
 }
