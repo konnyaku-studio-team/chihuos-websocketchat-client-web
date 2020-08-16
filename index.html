@@ -41,6 +41,17 @@
             <div id="author">作者:chihuo2104</div>
             <div id="github-ch"><a href="https://github.com/chihuo2104/">GitHub账号</a></div>
         </div>
+        <div id="container">
+            <div id="messagecontrol">
+                以下是某些聊天信息:
+            </div>
+            <div id="insertmessage">
+                输入聊天内容:<input id="messageinput" name="mi" >
+                <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
+                <button onclick="openwindow('connectwindow')" value="commit" id="connectbutton">连接服务器</button>
+                <button onclick="openwindow('aboutwindow')" value="commit" id="aboutusbutton">关于这个&我们</button>
+            </div>
+        </div>
         <!--[if IE]>
             <script>
                 var connectwindow=document.getElementById("connectwindow");
@@ -57,20 +68,11 @@
                 var mobwindow=document.getElementById("mobwindow");
                 var mask=document.getElementById("mask");
                 mobwindow.style.display="block";
+                var container=document.getElementById("container");
+                container.style.display="none";
             }
             
         </script>
-        <div id="container">
-            <div id="messagecontrol">
-                以下是某些聊天信息:
-            </div>
-            <div id="insertmessage">
-                输入聊天内容:<input id="messageinput" name="mi" >
-                <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
-                <button onclick="openwindow('connectwindow')" value="commit" id="connectbutton">连接服务器</button>
-                <button onclick="openwindow('aboutwindow')" value="commit" id="aboutusbutton">关于这个&我们</button>
-            </div>
-        </div>
         <script src="message.js" defer></script>
         </body>
 </html>
