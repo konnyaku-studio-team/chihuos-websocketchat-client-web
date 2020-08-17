@@ -1,3 +1,26 @@
+var storage_setting;
+if(localStorage.getItem("localstorage_settings")==null){
+    localStorage.setItem("localstorage_settings",false);
+}else{
+    var storage_setting=localStorage.getItem("localstorage_settings");
+    var checkbox=document.getElementById("checkstorage");
+    checkbox.checked=storage_setting;
+}
+if(storage_setting){
+    if(!(localStorage.getItem("server_address")==null)){
+        var serversite=document.getElementById("serversite");
+        serversite.value=localStorage.getItem("server_address");
+        alert("检测到您有服务器存储，已为您自动填充。");
+    }   
+}
+/*
+BASE64
+------------
+|          |
+|          |
+|          |
+------------
+*/
 function Base64() {  
 
     // private property  
@@ -106,6 +129,9 @@ function connectws(){
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
     var messagecontrol=document.getElementById("messagecontrol");
+    if(storage_setting){
+        localStorage.setItem("server_address",serversite.value);
+    }
     try{
         wss=new WebSocket(serversite.value);
     }catch(wse){
@@ -169,4 +195,5 @@ function getKey(){
 }
 function changeStorage(){
     storage_setting=!storage_setting;
+    localStorage.setItem("localstorage_settings",storage_setting);
 }
