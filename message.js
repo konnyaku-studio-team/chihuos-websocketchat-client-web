@@ -162,3 +162,8 @@ function openwindow(wnm){
     connectwindow.style.display="block";
     mask.style.display="block";
 }
+function getKey(){
+    if(event.keyCode==13){
+        commitws();
+    }
+}
