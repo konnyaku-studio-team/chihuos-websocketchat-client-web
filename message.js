@@ -167,3 +167,6 @@ function getKey(){
         commitws();
     }
 }
+function changeStorage(){
+    storage_setting=!storage_setting;
+}

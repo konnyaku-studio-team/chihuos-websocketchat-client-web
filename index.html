@@ -24,7 +24,9 @@
                 <br>
                 <div id="connectfrom" class="t-center">
                     <input id="serversite" name="ss" type="text" placeholder="输入以ws://或者wss://开头的链接">
-                    <br><br>
+                    <br>
+                    <input id="checkstorage" onchange="changeStorage()" type="checkbox">保存服务器（使用LocalStorage）
+                    <br>
                     <button onclick="connectws()" value="connect" id="connectbutton" class="t-center">连接</button>
                 </div>
             </div> 
