@@ -62,9 +62,13 @@
                 以下是某些聊天信息:
             </div>
             <div id="insertmessage">
-                输入聊天内容:<input id="messageinput" name="mi" onkeypress="getKey();">
-                <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
-                <button onclick="openwindow('toolwindow')"  value="tools" id="toolsbutton">工具箱</button>
+                <span id="insertmessagecontainer">
+                    输入聊天内容:<input id="messageinput" name="mi" onkeypress="getKey();">
+                </span>
+                <span id="insertmessagebutton">
+                    <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
+                    <button onclick="openwindow('toolwindow')"  value="tools" id="toolsbutton">工具箱</button>
+                </span>
             </div>
         </div>
         <script>
