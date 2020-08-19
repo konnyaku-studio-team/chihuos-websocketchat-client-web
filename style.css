@@ -94,3 +94,9 @@
     height: 100%;
     padding: 16px;
 }
+#toolwindow{
+    text-align: center;
+    width:100px;
+    height:100px;
+    display:none;
+}

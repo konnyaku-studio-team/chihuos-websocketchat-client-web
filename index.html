@@ -43,6 +43,10 @@
             <div id="author">作者:chihuo2104</div>
             <div id="github-ch"><a href="https://github.com/chihuo2104/">GitHub账号</a></div>
         </div>
+        <div id="toolwindow" class="window">
+            <button onclick="hiddenwindow('toolwindow');openwindow('connectwindow')" value="connectserver" id="connectbutton">连接服务器</button>
+            <button onclick="hiddenwindow('toolwindow');openwindow('aboutwindow')" value="aboutus" id="aboutusbutton">关于这个&我们</button>
+        </div>
         <!--[if IE]>
             <script>
                 var connectwindow=document.getElementById("connectwindow");
@@ -59,9 +63,7 @@
             <div id="insertmessage">
                 输入聊天内容:<input id="messageinput" name="mi" onkeypress="getKey();">
                 <button onclick="commitws()" value="commit" id="commitbutton">提交</button>
-                <button onclick="openmenu()"  value="tools" id="toolsbutton">工具箱</button>
-                <button onclick="openwindow('connectwindow')" value="connectserver" id="connectbutton">连接服务器</button>
-                <button onclick="openwindow('aboutwindow')" value="aboutus" id="aboutusbutton">关于这个&我们</button>
+                <button onclick="openwindow('toolwindow')"  value="tools" id="toolsbutton">工具箱</button>
             </div>
         </div>
         <script>
