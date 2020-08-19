@@ -18,7 +18,7 @@
         </div>          
         <div id="connectwindow" class="window">
             <div id="serversettings">
-                <span id="exit" class="exit-button" onclick="hiddenwindow('connectwindow')" title="关闭">X</span>
+                <span id="ss-exit" class="exit-button" onclick="hiddenwindow('connectwindow')" title="关闭">X</span>
                 <h1 id="tips-connectserver" class="t-center p-l5px">连接服务器</h1>
                 <span id="tips-serversite">服务器地址</span>
                 <br>
@@ -32,7 +32,7 @@
             </div> 
         </div>
         <div id="aboutwindow" class="window">
-            <span id="exit" class="exit-button" onclick="hiddenwindow('aboutwindow')" title="关闭">X</span>
+            <span id="aw-exit" class="exit-button" onclick="hiddenwindow('aboutwindow')" title="关闭">X</span>
             <h1 id="about-title" class="t-center">关于</h1>
             <img id="about-cwcimage" alt="cwc-logo" title="cwc-logo" src="cwc-logo.png">
             <h2 id="about-softtitle-en">Chihuo's Websocket Chat</h2>
@@ -44,6 +44,7 @@
             <div id="github-ch"><a href="https://github.com/chihuo2104/">GitHub账号</a></div>
         </div>
         <div id="toolwindow" class="window">
+            <span id="tw-exit" class="exit-button" onclick="hiddenwindow('toolwindow')" title="关闭">X</span>
             <button onclick="hiddenwindow('toolwindow');openwindow('connectwindow')" value="connectserver" id="connectbutton">连接服务器</button>
             <button onclick="hiddenwindow('toolwindow');openwindow('aboutwindow')" value="aboutus" id="aboutusbutton">关于这个&我们</button>
         </div>
