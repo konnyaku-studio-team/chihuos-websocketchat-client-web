@@ -197,3 +197,9 @@ function changeStorage(){
     storage_setting=!storage_setting;
     localStorage.setItem("localstorage_settings",storage_setting);
 }
+function clearSettingData(){
+    var c=confirm("您确定要清空所有设置的数据吗？");
+    if(c){
+        localStorage.clear();
+    }
+}
