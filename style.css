@@ -114,3 +114,7 @@ body{
     height:100%;
     margin:0px;
 }
+#settingwindow{
+    width:256px;
+    height:256px;
+}
