@@ -204,3 +204,6 @@ function clearSettingData(){
         alert("设置数据清除完成。");
     }
 }
+function changeSettingData(){
+    
+}
