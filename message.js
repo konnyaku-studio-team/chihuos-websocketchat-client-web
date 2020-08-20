@@ -201,5 +201,6 @@ function clearSettingData(){
     var c=confirm("您确定要清空所有设置的数据吗？");
     if(c){
         localStorage.clear();
+        alert("设置数据清除完成。");
     }
 }
