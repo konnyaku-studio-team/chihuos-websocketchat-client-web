@@ -75,16 +75,19 @@ bgcolor如果觉得不好可以调整。
     padding:8px;
     margin: 0px;
 }
+/* 信息输入框 */
 #messageinput{
     width:80%;
     height:100%;
     margin: 0px;
 }
+/* 信息输入容器 */
 #insertmessagecontainer{
     width:80%;
     height:100%;
     margin:0px;
 }
+/* 信息提交按钮 */
 #insertmessagebutton{
     width:20%;
     height:100%;
@@ -102,10 +105,12 @@ hiddenwindow(windowname); //<-隐藏窗口
     width:480px;
     height:200px;
 }
+/* 服务器地址输入框 */
 #serversite{
     width: 400px;
     height:30px;
 }
+/* 服务器地址提示 */
 #tips-serversite{
     padding-left:40px;
 }
@@ -141,14 +146,17 @@ hiddenwindow(windowname); //<-隐藏窗口
 #aboutwindow>h1,h2,h3,h4,h5,h6,div{
     margin:8px;
 }
+/* 关于窗口-CWC照片 */
 #about-cwcimg{
     width:240px;
     height:120px;
     text-align:center;
 }
+/* 控制容器 */
 #container{
     z-index:-1;
 }
+/* 信息接收控制 */
 #messagecontrol{
     overflow-x:scroll;
     overflow-y:scroll;
