@@ -1,13 +1,16 @@
-#insertmessage{
-    position:fixed;
-    bottom:0px;
-    left:0px;
-    border-top:3px #FF0000 solid;
-    width:100%;
-    max-height: 15%;
-    padding:8px;
-    margin: 0px;
+/* 全距为0px */
+body{
+    margin:0px;
 }
+/*
+Class
+*/
+/*
+.mask
+用于窗口使用的全屏遮罩
+bgcolor:rgba(0,0,0,0.5)
+但是可以调整透明度
+*/
 .mask{ 
     margin:0px;
     width:100%;
@@ -20,7 +23,14 @@
     top:0;
     z-index: 2;
     /* display:none; */
-} 
+}
+/*
+.window
+用于显示窗口的CSS类
+居中显示
+使用了.window之后只需要设置高度和宽度。
+bgcolor如果觉得不好可以调整。
+*/
 .window{
     background-color:#008899;
     position: absolute;
@@ -32,22 +42,17 @@
     z-index: 2;
     /*display: none; */
 }
-#connectwindow{
-    width:480px;
-    height:200px;
-}
-#aboutwindow{
-    width:360px;
-    height:420px;
-    display: none;
-    text-align: center;
-}
-#aboutwindow>h1,h2,h3,h4,h5,h6,div{
-    margin:8px;
-}
+/*
+.t-center
+文本居中（不推荐使用HTML的align="center"）
+*/
 .t-center{
     text-align: center;
 }
+/*
+.exit-button
+窗口中的退出窗口，可以多加设计。（如MAC版）
+*/
 .exit-button{
     color:#FF0000;
     position: absolute;
@@ -55,49 +60,20 @@
     top:10px;
     cursor: pointer;
 }
-#serversite{
-    width: 400px;
-    height:30px;
-}
-#tips-serversite{
-    padding-left:40px;
-}
-#container{
-    z-index:-1;
-}
-#about-cwcimg{
-    width:240px;
-    height:120px;
-    text-align:center;
-}
-#iewindow{
-    width:384px;
-    height:256px;
-    text-align:center;
-    display: none;
-}
-#messagecontrol{
-    overflow-x:scroll;
-    overflow-y:scroll;
+/*
+#insertmessage:
+信息输入界面
+一般情况固定在下面即可。
+*/
+#insertmessage{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    border-top:3px #FF0000 solid;
     width:100%;
-    height:92%;
-    min-height:80%;
-}
-#mobwindow{
-    text-align: center;
-    display: none;
-    width: 100%;
-    height: 100%;
-    padding: 16px;
-}
-#toolwindow{
-    text-align: center;
-    width:120px;
-    height:240px;
-    display:none;
-}
-body{
-    margin:0px;
+    max-height: 15%;
+    padding:8px;
+    margin: 0px;
 }
 #messageinput{
     width:80%;
@@ -114,6 +90,73 @@ body{
     height:100%;
     margin:0px;
 }
+/*
+下面基本上是窗口
+一般不显示的设置隐藏即可
+使用JS:
+openwindow(windowname)；//<-打开窗口
+hiddenwindow(windowname); //<-隐藏窗口
+*/
+/* 连接窗口 */
+#connectwindow{
+    width:480px;
+    height:200px;
+}
+#serversite{
+    width: 400px;
+    height:30px;
+}
+#tips-serversite{
+    padding-left:40px;
+}
+/* 手机软拒绝 */
+#mobwindow{
+    text-align: center;
+    display: none;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+}
+/* 工具箱窗口 */
+#toolwindow{
+    text-align: center;
+    width:120px;
+    height:240px;
+    display:none;
+}
+/* IE拒绝 */
+#iewindow{
+    width:384px;
+    height:256px;
+    text-align:center;
+    display: none;
+}
+/* 关于窗口 */
+#aboutwindow{
+    width:360px;
+    height:420px;
+    display: none;
+    text-align: center;
+}
+#aboutwindow>h1,h2,h3,h4,h5,h6,div{
+    margin:8px;
+}
+#about-cwcimg{
+    width:240px;
+    height:120px;
+    text-align:center;
+}
+#container{
+    z-index:-1;
+}
+#messagecontrol{
+    overflow-x:scroll;
+    overflow-y:scroll;
+    width:100%;
+    height:92%;
+    min-height:80%;
+}
+/* 测试窗口 */
 #settingwindow{
     width:256px;
     height:256px;
