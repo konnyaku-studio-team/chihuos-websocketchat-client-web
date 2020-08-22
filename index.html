@@ -62,6 +62,10 @@
             <button onclick="window.open('https://forum.cwchat.top/','_blank')" value="forum" id="forumbutton">访问论坛</button>
             <button onclick="whiddenwindow('toolwindow');openwindow('helplitewindow')" value="forum" id="forumbutton">帮助(Lite)</button>
         </div>
+        <div id="emotewindow" class="window">
+            <span id="ew-exit" class="exit-button" onclick="hiddenwindow('emotewindow')" title="关闭">X</span>
+            <h1 id="ew-title" class="t-center">选择表情</h1>
+        </div>
         <!--[if IE]>
             <script>
                 var connectwindow=document.getElementById("connectwindow");
@@ -80,7 +84,7 @@
                     输入聊天内容:<input id="messageinput" name="mi" onkeypress="getKey();">
                 </span>
                 <span id="insertmessagebutton">
-                    <button id="emote-button">
+                    <button id="emote-button" name="eb" onclick="openwindow('emotewindow')">
                         <div id="emote-button-inner">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.43 254">
                             <defs>

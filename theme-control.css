@@ -176,3 +176,13 @@ hiddenwindow(windowname); //<-隐藏窗口
     height:256px;
     display:none;
 }
+/* 表情选择窗口 */
+#emotewindow{
+    width:512px;
+    height:512px;
+    display: none;
+}
+#emotewindow>h1,img{
+    margin: 0px;
+    padding: 8px;
+}
