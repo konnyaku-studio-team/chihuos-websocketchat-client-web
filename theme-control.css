@@ -93,6 +93,12 @@ bgcolor如果觉得不好可以调整。
     height:100%;
     margin:0px;
 }
+/* 表情按钮 (控制表情svg图像）*/
+#emote-button-inner{
+    width:32px;
+    height:32px;
+    margin:0px;
+}
 /*
 下面基本上是窗口
 一般不显示的设置隐藏即可
