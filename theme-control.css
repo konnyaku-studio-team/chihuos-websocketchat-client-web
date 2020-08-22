@@ -60,6 +60,15 @@ bgcolor如果觉得不好可以调整。
     top:10px;
     cursor: pointer;
 }
+/* 
+.emote-show
+显示表情选择的样式
+ */
+ .emote-show{
+     width:32px;
+     height:32px;
+     cursor: pointer;
+ }
 /*
 #insertmessage:
 信息输入界面
