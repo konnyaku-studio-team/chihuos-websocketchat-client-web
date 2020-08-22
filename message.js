@@ -19,15 +19,18 @@ function commitws(){
     wss.send(base64.encode(messageinput.value)); 
 }
 function getKey(){
+    console.debug("[debug]["+new Date()+"]运行了getkey函数！");
     if(event.keyCode==13){
         commitws();
     }
 }
 function changeStorage(){
+    console.debug("[debug]["+new Date()+"]运行了changeStorage函数！");
     storage_setting=!storage_setting;
     localStorage.setItem("localstorage_settings",storage_setting);
 }
 function clearSettingData(){
+    console.debug("[debug]["+new Date()+"]运行了clearSettingData函数！");
     var c=confirm("您确定要清空所有设置的数据吗？");
     if(c){
         localStorage.clear();
@@ -36,4 +39,9 @@ function clearSettingData(){
 }
 function changeSettingData(){
     
+}
+function addEmote(emotename){
+    console.debug("[debug]["+new Date()+"]运行了addEmote函数！");
+    var messageinput=document.getElementById("messageinput");
+    messageinput.value+="{$emote:"+emotename+":etmoe$}";
 }
