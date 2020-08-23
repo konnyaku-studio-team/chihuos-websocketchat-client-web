@@ -48,8 +48,8 @@ function addEmote(emotename){
 var base64=new Base64();
 const EMOTE_FILE_CDN="https://cdn.jsdelivr.net/gh/chihuos-wschat-filecdn/emote@master";//目前使用GayHub本人CDN源，以后设置可以调整吧......
 function parsemotedata(realmsg,ename){
-    while(realmsg.indexOf("{$emote:"+emotedata+":etome$}")!=-1){
-        realmsg=realmsg.replace("{$emote:"+emotedata+":etome$}","<img src=\""+EMOTE_FILE_CDN+"/"+ename+".png\" class=\"emote-show\">");
+    while(realmsg.indexOf("{$emote:"+ename+":etome$}")!=-1){
+        realmsg=realmsg.replace("{$emote:"+ename+":etome$}","<img src=\""+EMOTE_FILE_CDN+"/"+ename+".png\" class=\"emote-show\">");
     }
     return realmsg;
 }
