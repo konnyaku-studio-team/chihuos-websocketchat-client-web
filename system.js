@@ -17,6 +17,7 @@ function commitws(){
     console.debug("[debug]["+new Date()+"]运行了commitws函数！");
     var messageinput=document.getElementById("messageinput");
     wss.send(base64.encode(messageinput.value)); 
+    messageinput.value="";
 }
 function getKey(){
     console.debug("[debug]["+new Date()+"]运行了getkey函数！");
