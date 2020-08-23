@@ -127,6 +127,8 @@ function connectws(){
         wss.onmessage=function(msg){
             console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
             messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
+            // String类QAQ
+            
             if("Notification" in Window){
                 alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
             }

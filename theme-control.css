@@ -68,6 +68,8 @@ bgcolor如果觉得不好可以调整。
      width:32px;
      height:32px;
      cursor: pointer;
+     margin:4px;
+     padding: 0px;
  }
 /*
 #insertmessage:
@@ -187,7 +189,7 @@ hiddenwindow(windowname); //<-隐藏窗口
 }
 /* 表情选择窗口 */
 #emotewindow{
-    width:512px;
+    width:256px;
     height:512px;
     display: none;
 }
