@@ -81,6 +81,22 @@ function connectws(){
             realmsg=parsemotedata(realmsg,"tv_dz");
             realmsg=parsemotedata(realmsg,"tv_hx");
             realmsg=parsemotedata(realmsg,"tv_by");
+            realmsg=parsemotedata(realmsg,"tv_dl");
+            realmsg=parsemotedata(realmsg,"tv_fn");
+            realmsg=parsemotedata(realmsg,"tv_gl");
+            realmsg=parsemotedata(realmsg,"tv_lh");
+            realmsg=parsemotedata(realmsg,"tv_lhcq");
+            realmsg=parsemotedata(realmsg,"tv_xyx");
+            realmsg=parsemotedata(realmsg,"tv_mdkd");
+            realmsg=parsemotedata(realmsg,"bili_wx");
+            realmsg=parsemotedata(realmsg,"bili_cg");
+            realmsg=parsemotedata(realmsg,"bili_dcall");
+            realmsg=parsemotedata(realmsg,"bili_dk");
+            realmsg=parsemotedata(realmsg,"bili_doge");
+            realmsg=parsemotedata(realmsg,"bili_hj");
+            realmsg=parsemotedata(realmsg,"bili_ma");
+            realmsg=parsemotedata(realmsg,"bili_xiao");
+            realmsg=parsemotedata(realmsg,"bili_xk");
             var parsedmsg=realmsg;
             messagecontrol.innerHTML+="<br>"+parsedmsg;
             // String类QAQ
