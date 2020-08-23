@@ -79,6 +79,7 @@ function connectws(){
             realmsg=parsemotedata(realmsg,"tv_dk");
             realmsg=parsemotedata(realmsg,"tv_dz");
             realmsg=parsemotedata(realmsg,"tv_hx");
+            realmsg=parsemotedata(realmsg,"tv_by");
             var parsedmsg=realmsg;
             messagecontrol.innerHTML+="<br>"+parsedmsg;
             // String类QAQ
