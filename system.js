@@ -9,13 +9,13 @@ if(localStorage.getItem("localstorage_settings")==null){
 }
 if(localStorage.getItem("setting_comp_version")==null){
     var setting_comp_version="now";
-    var comp_selected=document.getElementById("select-compversion-"+setting_comp_version);
+    var comp_selected=document.getElementById("select-compversion");
     localStorage.setItem("setting_comp_version","now");
-    comp_selected.selected=true;
+    comp_selected.value=setting_comp_version;
 }else{
     var setting_comp_version=localStorage.getItem("setting_comp_version");
-    var comp_selected=document.getElementById("select-compversion-"+setting_comp_version);
-    comp_selected.selected=true;
+    var comp_selected=document.getElementById("select-compversion");
+    comp_selected.value=setting_comp_version;
 }
 if(storage_setting){
     if(!(localStorage.getItem("server_address")==null)){
@@ -30,12 +30,21 @@ function commitws(){
     console.debug("[debug]["+new Date()+"]运行了commitws函数！");
     var messageinput=document.getElementById("messageinput");
     var commituname=(uname!="")?uname:"匿名用户";
-    jmessage={
-        "uname":commituname,
-        "text":messageinput.value,
-        "committime":Math.round(new Date().getTime()/1000)
+    var commitLocalTime = new Date().toLocaleString();
+    if(setting_comp_version=="now"){
+        jmessage={
+            "uname":commituname,
+            "text":messageinput.value,
+            "committime":Math.round(new Date().getTime()/1000)
+        }
+        wss.send(base64.encode(JSON.stringify(jmessage))); 
+    }else{
+        if(setting_comp_version=="B2"){
+            wss.send(base64.encode(commituname+"在"+commitLocalTime+"说："+messageinput.value));
+        }else{
+            wss.send(commituname+"在"+commitLocalTime+"说："+messageinput.value);
+        }
     }
-    wss.send(base64.encode(JSON.stringify(jmessage))); 
     messageinput.value="";
 }
 function getKey(){
@@ -62,6 +71,7 @@ function changeSettingData(){
     var comp_select=document.getElementById("select-compversion");
     localStorage.setItem("setting_comp_version",comp_select.value);
     alert("设置更改成功！");
+    location.reload();
 }
 function addEmote(emotename){
     console.debug("[debug]["+new Date()+"]运行了addEmote函数！");
@@ -96,37 +106,46 @@ function connectws(){
         alert("连接成功！");
         wss.onmessage=function(msg){
             console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
-            var realmsgj=JSON.parse(base64.decode(msg.data));
-            var realmsg=realmsgj.text;
-            realmsg=parsemotedata(realmsg,"tv_doge");
-            realmsg=parsemotedata(realmsg,"tv_ll");
-            realmsg=parsemotedata(realmsg,"tv_yx");
-            realmsg=parsemotedata(realmsg,"tv_angry");
-            realmsg=parsemotedata(realmsg,"tv_cute");
-            realmsg=parsemotedata(realmsg,"tv_dk");
-            realmsg=parsemotedata(realmsg,"tv_dz");
-            realmsg=parsemotedata(realmsg,"tv_hx");
-            realmsg=parsemotedata(realmsg,"tv_by");
-            realmsg=parsemotedata(realmsg,"tv_dl");
-            realmsg=parsemotedata(realmsg,"tv_fn");
-            realmsg=parsemotedata(realmsg,"tv_gl");
-            realmsg=parsemotedata(realmsg,"tv_lh");
-            realmsg=parsemotedata(realmsg,"tv_lhcq");
-            realmsg=parsemotedata(realmsg,"tv_xyx");
-            realmsg=parsemotedata(realmsg,"tv_mdkd");
-            realmsg=parsemotedata(realmsg,"bili_wx");
-            realmsg=parsemotedata(realmsg,"bili_cg");
-            realmsg=parsemotedata(realmsg,"bili_dcall");
-            realmsg=parsemotedata(realmsg,"bili_dk");
-            realmsg=parsemotedata(realmsg,"bili_doge");
-            realmsg=parsemotedata(realmsg,"bili_hj");
-            realmsg=parsemotedata(realmsg,"bili_ma");
-            realmsg=parsemotedata(realmsg,"bili_xiao");
-            realmsg=parsemotedata(realmsg,"bili_xk");
-            var parsedmsg=realmsg;
-            var unixTimestamp = new Date(realmsgj.committime * 1000)
-            var commitLocalTime = unixTimestamp.toLocaleString();
-            messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说："+parsedmsg;
+            if(setting_comp_version=="now"){
+                var realmsgj=JSON.parse(base64.decode(msg.data));
+                var realmsg=realmsgj.text;
+                realmsg=parsemotedata(realmsg,"tv_doge");
+                realmsg=parsemotedata(realmsg,"tv_ll");
+                realmsg=parsemotedata(realmsg,"tv_yx");
+                realmsg=parsemotedata(realmsg,"tv_angry");
+                realmsg=parsemotedata(realmsg,"tv_cute");
+                realmsg=parsemotedata(realmsg,"tv_dk");
+                realmsg=parsemotedata(realmsg,"tv_dz");
+                realmsg=parsemotedata(realmsg,"tv_hx");
+                realmsg=parsemotedata(realmsg,"tv_by");
+                realmsg=parsemotedata(realmsg,"tv_dl");
+                realmsg=parsemotedata(realmsg,"tv_fn");
+                realmsg=parsemotedata(realmsg,"tv_gl");
+                realmsg=parsemotedata(realmsg,"tv_lh");
+                realmsg=parsemotedata(realmsg,"tv_lhcq");
+                realmsg=parsemotedata(realmsg,"tv_xyx");
+                realmsg=parsemotedata(realmsg,"tv_mdkd");
+                realmsg=parsemotedata(realmsg,"bili_wx");
+                realmsg=parsemotedata(realmsg,"bili_cg");
+                realmsg=parsemotedata(realmsg,"bili_dcall");
+                realmsg=parsemotedata(realmsg,"bili_dk");
+                realmsg=parsemotedata(realmsg,"bili_doge");
+                realmsg=parsemotedata(realmsg,"bili_hj");
+                realmsg=parsemotedata(realmsg,"bili_ma");
+                realmsg=parsemotedata(realmsg,"bili_xiao");
+                realmsg=parsemotedata(realmsg,"bili_xk");
+                var parsedmsg=realmsg;
+                var unixTimestamp = new Date(realmsgj.committime * 1000)
+                var commitLocalTime = unixTimestamp.toLocaleString();
+                messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说："+parsedmsg;
+            }else{
+                if(setting_comp_version=="B2"){
+                    messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
+                }else{
+                    messagecontrol.innerHTML+="<br>"+msg.data;
+                }
+            }
+            
             // String类QAQ
             if("Notification" in Window){
                 alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
