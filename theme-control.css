@@ -71,6 +71,16 @@ bgcolor如果觉得不好可以调整。
      margin:4px;
      padding: 0px;
  }
+ /* 
+ .emote-show-text
+表情收到后的显示方式
+  */
+ .emote-show-text{
+    width:32px;
+    height:32px;
+    margin:4px;
+    padding: 0px;
+ }
 /*
 #insertmessage:
 信息输入界面

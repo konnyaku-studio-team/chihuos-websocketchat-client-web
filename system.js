@@ -19,7 +19,7 @@ function commitws(){
     jmessage={
         "uname":"foo",
         "text":messageinput.value,
-        "committime":new Date()
+        "committime":Math.round(new Date().getTime()/1000)
     }
     wss.send(base64.encode(JSON.stringify(jmessage))); 
     messageinput.value="";
@@ -55,7 +55,7 @@ var base64=new Base64();
 const EMOTE_FILE_CDN="https://cdn.jsdelivr.net/gh/chihuos-wschat-filecdn/emote@master";//目前使用GayHub本人CDN源，以后设置可以调整吧......
 function parsemotedata(realmsg,ename){
     while(realmsg.indexOf("{$emote:"+ename+":etome$}")!=-1){
-        realmsg=realmsg.replace("{$emote:"+ename+":etome$}","<img src=\""+EMOTE_FILE_CDN+"/"+ename+".png\" class=\"emote-show\">");
+        realmsg=realmsg.replace("{$emote:"+ename+":etome$}","<img src=\""+EMOTE_FILE_CDN+"/"+ename+".png\" class=\"emote-show-text\">");
     }
     return realmsg;
 }
@@ -76,7 +76,8 @@ function connectws(){
         alert("连接成功！");
         wss.onmessage=function(msg){
             console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
-            var realmsg=base64.decode(msg.data);
+            var realmsgj=JSON.parse(base64.decode(msg.data));
+            var realmsg=realmsgj.text;
             realmsg=parsemotedata(realmsg,"tv_doge");
             realmsg=parsemotedata(realmsg,"tv_ll");
             realmsg=parsemotedata(realmsg,"tv_yx");
@@ -103,7 +104,9 @@ function connectws(){
             realmsg=parsemotedata(realmsg,"bili_xiao");
             realmsg=parsemotedata(realmsg,"bili_xk");
             var parsedmsg=realmsg;
-            messagecontrol.innerHTML+="<br>"+parsedmsg;
+            var unixTimestamp = new Date(realmsgj.committime * 1000)
+            var commitLocalTime = unixTimestamp.toLocaleString();
+            messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说"+parsedmsg;
             // String类QAQ
             if("Notification" in Window){
                 alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
