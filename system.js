@@ -113,7 +113,7 @@ function connectws(){
             var parsedmsg=realmsg;
             var unixTimestamp = new Date(realmsgj.committime * 1000)
             var commitLocalTime = unixTimestamp.toLocaleString();
-            messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说"+parsedmsg;
+            messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说："+parsedmsg;
             // String类QAQ
             if("Notification" in Window){
                 alert("草，你的浏览器是不是IE的？怎么连这个也不支持？");
