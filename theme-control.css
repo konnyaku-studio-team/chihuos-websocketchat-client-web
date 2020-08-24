@@ -130,15 +130,24 @@ hiddenwindow(windowname); //<-隐藏窗口
 /* 连接窗口 */
 #connectwindow{
     width:480px;
-    height:200px;
+    height:256px;
 }
 /* 服务器地址输入框 */
 #serversite{
     width: 400px;
     height:30px;
 }
+/* 用户名输入框 */
+#username{
+    width: 400px;
+    height:30px;
+}
 /* 服务器地址提示 */
 #tips-serversite{
+    padding-left:40px;
+}
+/* 用户名提示 */
+#tips-username{
     padding-left:40px;
 }
 /* 手机软拒绝 */
@@ -165,8 +174,8 @@ hiddenwindow(windowname); //<-隐藏窗口
 }
 /* 关于窗口 */
 #aboutwindow{
-    width:360px;
-    height:420px;
+    width:320px;
+    height:450px;
     display: none;
     text-align: center;
 }

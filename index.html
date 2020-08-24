@@ -22,12 +22,16 @@
             <div id="serversettings">
                 <span id="ss-exit" class="exit-button" onclick="hiddenwindow('connectwindow')" title="关闭">X</span>
                 <h1 id="tips-connectserver" class="t-center p-l5px">连接服务器</h1>
+                <span id="tips-username">用户名</span>
+                <div id="connectfrom2" class="t-center">
+                <input id="username" name="uname" type="text" placeholder="输入你的用户名吧！（可不填）">
+                </div>
                 <span id="tips-serversite">服务器地址</span>
                 <br>
                 <div id="connectfrom" class="t-center">
-                    <input id="serversite" name="ss" type="text" placeholder="输入以ws://或者wss://开头的链接">
+                    <input id="serversite" name="ss" type="text" placeholder="输入以ws://或者wss://开头的链接吧！">
                     <br>
-                    <input id="checkstorage" onchange="changeStorage()" type="checkbox">保存服务器（使用LocalStorage）
+                    <input id="checkstorage" onchange="changeStorage()" type="checkbox">记住我（使用LocalStorage）
                     <br>
                     <button onclick="connectws()" value="connect" id="connectbutton" class="t-center">连接</button>
                 </div>

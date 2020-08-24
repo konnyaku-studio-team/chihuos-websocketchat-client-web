@@ -1,4 +1,5 @@
 var storage_setting;
+var uname;
 if(localStorage.getItem("localstorage_settings")==null){
     localStorage.setItem("localstorage_settings",false);
 }else{
@@ -9,15 +10,18 @@ if(localStorage.getItem("localstorage_settings")==null){
 if(storage_setting){
     if(!(localStorage.getItem("server_address")==null)){
         var serversite=document.getElementById("serversite");
+        var username=document.getElementById("username");
         serversite.value=localStorage.getItem("server_address");
-        alert("检测到您有服务器存储，已为您自动填充。");
+        username.value=localStorage.getItem("username");
+        alert("检测到您有服务器和用户名存储，已为您自动填充。");
     }   
 }
 function commitws(){
     console.debug("[debug]["+new Date()+"]运行了commitws函数！");
     var messageinput=document.getElementById("messageinput");
+    var commituname=(uname!="")?uname:"匿名用户";
     jmessage={
-        "uname":"foo",
+        "uname":commituname,
         "text":messageinput.value,
         "committime":Math.round(new Date().getTime()/1000)
     }
@@ -63,8 +67,11 @@ function parsemotedata(realmsg,ename){
 function connectws(){   
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     var serversite=document.getElementById("serversite");
+    var username=document.getElementById("username");
     var messagecontrol=document.getElementById("messagecontrol");
+    uname=username.value;
     if(storage_setting){
+        localStorage.setItem("username",username.value);
         localStorage.setItem("server_address",serversite.value);
     }
     try{
