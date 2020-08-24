@@ -7,6 +7,16 @@ if(localStorage.getItem("localstorage_settings")==null){
     var checkbox=document.getElementById("checkstorage");
     checkbox.checked=storage_setting;
 }
+if(localStorage.getItem("setting_comp_version")==null){
+    var setting_comp_version="now";
+    var comp_selected=document.getElementById("select-compversion-"+setting_comp_version);
+    localStorage.setItem("setting_comp_version","now");
+    comp_selected.selected=true;
+}else{
+    var setting_comp_version=localStorage.getItem("setting_comp_version");
+    var comp_selected=document.getElementById("select-compversion-"+setting_comp_version);
+    comp_selected.selected=true;
+}
 if(storage_setting){
     if(!(localStorage.getItem("server_address")==null)){
         var serversite=document.getElementById("serversite");
@@ -48,7 +58,10 @@ function clearSettingData(){
     }
 }
 function changeSettingData(){
-    
+    console.debug("[debug]["+new Date()+"]运行了changeSettingData函数！");
+    var comp_select=document.getElementById("select-compversion");
+    localStorage.setItem("setting_comp_version",comp_select.value);
+    alert("设置更改成功！");
 }
 function addEmote(emotename){
     console.debug("[debug]["+new Date()+"]运行了addEmote函数！");

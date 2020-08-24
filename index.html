@@ -52,7 +52,14 @@
         <div id="settingwindow" class="window">
             <span id="aw-exit" class="exit-button" onclick="hiddenwindow('settingwindow')" title="关闭">X</span>
             <h1 id="setting-title" class="t-center">设置</h1>
-            <div id="setting-later" class="t-center">目前没有需要设置的选项，您可以按清除数据按钮来清空服务器记忆。</div>
+            <h2 id="setting-desc-comp">兼容性</h2>
+            <h3 id="setting-comp-jrx">适配版本
+                <select name="version" id="select-compversion">
+                    <option value="now" id="select-compversion-now">目前版本（请到关于查看版本号）</option>
+                    <option value="B2" id="select-comperversion-b2">V0.0.2 Beta及以前版本（取消JSON构造）(受影响的版本：EU20200730a-EU20200823a)</option>
+                    <option value="A1" id="select-comperversion-a1">V0.0.1 Alpha及以前版本（取消JSON构造与base64编码加密）(受影响的版本：EU20200723a-EU20200730a)</option>
+                </select>
+            </h3>
             <div id="setting-submit-button-out" class="t-center"><button id="setting-submit-button" onclick="changeSettingData()">更改</button><button id="setting-clear-button" onclick="clearSettingData()">清除数据</button></div>
         </div>
         <div id="toolwindow" class="window">

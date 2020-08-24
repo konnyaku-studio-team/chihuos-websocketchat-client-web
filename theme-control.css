@@ -200,11 +200,15 @@ hiddenwindow(windowname); //<-隐藏窗口
     height:92%;
     min-height:80%;
 }
-/* 测试窗口 */
+/* 设置窗口 */
 #settingwindow{
     width:256px;
     height:256px;
     display:none;
+}
+#select-compversion{
+    width:224px;
+    height:32px;
 }
 /* 表情选择窗口 */
 #emotewindow{
