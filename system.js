@@ -21,7 +21,7 @@ function commitws(){
         "text":messageinput.value,
         "committime":new Date()
     }
-    wss.send(base64.encode(jmessage)); 
+    wss.send(base64.encode(JSON.stringify(jmessage))); 
     messageinput.value="";
 }
 function getKey(){
