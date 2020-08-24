@@ -197,3 +197,9 @@ hiddenwindow(windowname); //<-隐藏窗口
     margin: 0px;
     padding: 8px;
 }
+/* CWCHAT™ Help Document Lite Edition */
+#helplitewindow{
+    width:256px;
+    height:256px;
+    display:none;
+}

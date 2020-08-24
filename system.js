@@ -16,7 +16,12 @@ if(storage_setting){
 function commitws(){
     console.debug("[debug]["+new Date()+"]运行了commitws函数！");
     var messageinput=document.getElementById("messageinput");
-    wss.send(base64.encode(messageinput.value)); 
+    jmessage={
+        "uname":"foo",
+        "text":messageinput.value,
+        "committime":new Date()
+    }
+    wss.send(base64.encode(jmessage)); 
     messageinput.value="";
 }
 function getKey(){
