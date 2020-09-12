@@ -1,5 +1,7 @@
 # chihuos-websocketchat-client-web
 
+# Tips:本地仅存放正式版，如果需要测试版和每日更新版，请转自DEV分支
+
 仅仅是一个基于Websocket的聊天软件
 
 __正式版地址__（仅提供正式版）（V开头为正式版）（托管于阿里云OSS）
