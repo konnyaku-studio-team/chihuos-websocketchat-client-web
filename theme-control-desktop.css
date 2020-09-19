@@ -1,3 +1,4 @@
+@media screen and (min-width:1024px){
 /* 全距为0px */
 body{
     margin:0px;
@@ -225,4 +226,5 @@ hiddenwindow(windowname); //<-隐藏窗口
     width:256px;
     height:256px;
     display:none;
+}
 }

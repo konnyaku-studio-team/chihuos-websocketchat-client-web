@@ -1,0 +1,230 @@
+@media screen and (max-width:1024px){
+    /* 全距为0px */
+    body{
+        margin:0px;
+    }
+    /*
+    Class
+    */
+    /*
+    .mask
+    用于窗口使用的全屏遮罩
+    bgcolor:rgba(0,0,0,0.5)
+    但是可以调整透明度
+    */
+    .mask{ 
+        margin:0px;
+        width:100%;
+        height:100%;
+        background-color:rgba(0, 0, 0, 0.5);
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top:0;
+        z-index: 2;
+        /* display:none; */
+    }
+    /*
+    .window
+    用于显示窗口的CSS类
+    居中显示
+    使用了.window之后只需要设置高度和宽度。
+    bgcolor如果觉得不好可以调整。
+    */
+    .window{
+        background-color:#008899;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top:0;
+        margin: auto;
+        z-index: 2;
+        /*display: none; */
+    }
+    /*
+    .t-center
+    文本居中（不推荐使用HTML的align="center"）
+    */
+    .t-center{
+        text-align: center;
+    }
+    /*
+    .exit-button
+    窗口中的退出窗口，可以多加设计。（如MAC版）
+    */
+    .exit-button{
+        color:#FF0000;
+        position: absolute;
+        right:10px;
+        top:10px;
+        cursor: pointer;
+    }
+    /* 
+    .emote-show
+    显示表情选择的样式
+     */
+     .emote-show{
+         width:32px;
+         height:32px;
+         cursor: pointer;
+         margin:4px;
+         padding: 0px;
+     }
+     /* 
+     .emote-show-text
+    表情收到后的显示方式
+      */
+     .emote-show-text{
+        width:32px;
+        height:32px;
+        margin:4px;
+        padding: 0px;
+     }
+    /*
+    #insertmessage:
+    信息输入界面
+    一般情况固定在下面即可。
+    */
+    #insertmessage{
+        position:fixed;
+        bottom:0px;
+        left:0px;
+        border-top:3px #FF0000 solid;
+        width:100%;
+        max-height: 15%;
+        padding:8px;
+        margin: 0px;
+    }
+    /* 信息输入框 */
+    #messageinput{
+        width:80%;
+        height:100%;
+        margin: 0px;
+    }
+    /* 信息输入容器 */
+    #insertmessagecontainer{
+        width:80%;
+        height:100%;
+        margin:0px;
+    }
+    /* 信息提交按钮 */
+    #insertmessagebutton{
+        width:20%;
+        height:100%;
+        margin:0px;
+    }
+    /* 表情按钮 (控制表情svg图像）*/
+    #emote-button-inner{
+        width:32px;
+        height:32px;
+        margin:0px;
+    }
+    /*
+    下面基本上是窗口
+    一般不显示的设置隐藏即可
+    使用JS:
+    openwindow(windowname)；//<-打开窗口
+    hiddenwindow(windowname); //<-隐藏窗口
+    */
+    /* 连接窗口 */
+    #connectwindow{
+        width:480px;
+        height:256px;
+    }
+    /* 服务器地址输入框 */
+    #serversite{
+        width: 400px;
+        height:30px;
+    }
+    /* 用户名输入框 */
+    #username{
+        width: 400px;
+        height:30px;
+    }
+    /* 服务器地址提示 */
+    #tips-serversite{
+        padding-left:40px;
+    }
+    /* 用户名提示 */
+    #tips-username{
+        padding-left:40px;
+    }
+    /* 手机软拒绝 */
+    #mobwindow{
+        text-align: center;
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 16px;
+    }
+    /* 工具箱窗口 */
+    #toolwindow{
+        text-align: center;
+        width:120px;
+        height:240px;
+        display:none;
+    }
+    /* IE拒绝 */
+    #iewindow{
+        width:384px;
+        height:256px;
+        text-align:center;
+        display: none;
+    }
+    /* 关于窗口 */
+    #aboutwindow{
+        width:320px;
+        height:450px;
+        display: none;
+        text-align: center;
+    }
+    #aboutwindow>h1,h2,h3,h4,h5,h6,div{
+        margin:8px;
+    }
+    /* 关于窗口-CWC照片 */
+    #about-cwcimg{
+        width:240px;
+        height:120px;
+        text-align:center;
+    }
+    /* 控制容器 */
+    #container{
+        z-index:-1;
+    }
+    /* 信息接收控制 */
+    #messagecontrol{
+        overflow-x:scroll;
+        overflow-y:scroll;
+        width:100%;
+        height:92%;
+        min-height:80%;
+    }
+    /* 设置窗口 */
+    #settingwindow{
+        width:256px;
+        height:256px;
+        display:none;
+    }
+    #select-compversion{
+        width:224px;
+        height:32px;
+    }
+    /* 表情选择窗口 */
+    #emotewindow{
+        width:256px;
+        height:512px;
+        display: none;
+    }
+    #emotewindow>h1,img{
+        margin: 0px;
+        padding: 8px;
+    }
+    /* CWCHAT™ Help Document Lite Edition */
+    #helplitewindow{
+        width:256px;
+        height:256px;
+        display:none;
+    }
+    }
