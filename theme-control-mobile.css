@@ -130,18 +130,19 @@
     */
     /* 连接窗口 */
     #connectwindow{
-        width:480px;
-        height:256px;
+        /*sth.*/
+        width:100%;
+        height: 100%;
     }
     /* 服务器地址输入框 */
     #serversite{
-        width: 400px;
-        height:30px;
+        width:80%;
+        height:5%;
     }
     /* 用户名输入框 */
     #username{
-        width: 400px;
-        height:30px;
+        width: 80%;
+        height:5%;
     }
     /* 服务器地址提示 */
     #tips-serversite{
@@ -155,11 +156,6 @@
     #toolwindow{
         text-align: center;
         display:none;
-    }
-    /* IE拒绝 */
-    #iewindow{
-        text-align:center;
-        display: none;
     }
     /* 关于窗口 */
     #aboutwindow{
@@ -191,9 +187,10 @@
     #settingwindow{
         display:none;
     }
+    /* 选择器（兼容性） */
     #select-compversion{
-        width:224px;
-        height:32px;
+        width:100%;
+        height:5%;
     }
     /* 表情选择窗口 */
     #emotewindow{
