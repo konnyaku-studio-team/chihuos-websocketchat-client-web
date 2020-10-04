@@ -162,21 +162,15 @@
     /* 工具箱窗口 */
     #toolwindow{
         text-align: center;
-        width:120px;
-        height:240px;
         display:none;
     }
     /* IE拒绝 */
     #iewindow{
-        width:384px;
-        height:256px;
         text-align:center;
         display: none;
     }
     /* 关于窗口 */
     #aboutwindow{
-        width:320px;
-        height:450px;
         display: none;
         text-align: center;
     }
@@ -203,8 +197,6 @@
     }
     /* 设置窗口 */
     #settingwindow{
-        width:256px;
-        height:256px;
         display:none;
     }
     #select-compversion{
@@ -213,8 +205,6 @@
     }
     /* 表情选择窗口 */
     #emotewindow{
-        width:256px;
-        height:512px;
         display: none;
     }
     #emotewindow>h1,img{
@@ -223,8 +213,6 @@
     }
     /* CWCHAT™ Help Document Lite Edition */
     #helplitewindow{
-        width:256px;
-        height:256px;
         display:none;
     }
     }

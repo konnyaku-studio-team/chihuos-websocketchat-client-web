@@ -204,7 +204,7 @@ hiddenwindow(windowname); //<-隐藏窗口
 /* 设置窗口 */
 #settingwindow{
     width:256px;
-    height:256px;
+    height:512px;
     display:none;
 }
 #select-compversion{
