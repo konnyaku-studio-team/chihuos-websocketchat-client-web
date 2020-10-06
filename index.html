@@ -40,8 +40,8 @@
             <img id="about-cwcimage" alt="cwc-logo" title="cwc-logo" src="cwc-logo.png">
             <h2 id="about-softtitle-en">Chihuo's Websocket Chat</h2>
             <h3 id="about-softtitle-cn">赤火的网络套接字聊天程序</h3>
-            <h3 id="about-version">版本:V0.0.3 Beta(EU20201004a)</h3>
-            <h4 id="about-version-desc">更新日期:2020年10月14日</h4>
+            <h3 id="about-version">版本:V0.0.3 Beta(EU20201005a)</h3>
+            <h4 id="about-version-desc">更新日期:2020年10月5日</h4>
             <div id="github"><a href="https://github.com/konnyaku-studio-team/chihuos-websocketchat-client-web/">在GitHub上开源：Fork，Star我！</a></div>
             <div id="author">作者:chihuo2104</div>
             <div id="github-ch"><a href="https://github.com/chihuo2104/">GitHub账号</a></div>
@@ -58,7 +58,8 @@
                 </select>
             </h3>
             <h2 id="setting-chat-history">聊天记录</h2>
-            <h3 id="setting-chat-history-desc"><input type="checkbox" id="setting-chat-history-enabled">保存聊天记录<h3>
+            <h3 id="setting-chat-history-desc"><input type="checkbox" id="setting-chat-history-enabled">保存聊天记录在本地<h3>
+            <h3 id="setting-chat-history-cloud"><input type="checkbox" id="setting-chat-history-cloud-enabled">保存聊天记录在云端</h3>
             <div id="setting-submit-button-out" class="t-center"><button id="setting-submit-button" onclick="changeSettingData()">更改</button><button id="setting-clear-button" onclick="clearSettingData()">清除数据</button></div>
         </div>
         <div id="toolwindow" class="window">
@@ -70,7 +71,7 @@
             <button onclick="window.open('https://cwchat.top/','_blank')" value="main" id="mainbutton">访问主站</button>
             <button onclick="window.open('https://docs.cwchat.top/','_blank')" value="docs" id="docsbutton">访问文档</button>
             <button onclick="window.open('https://forum.cwchat.top/','_blank')" value="forum" id="forumbutton">访问论坛</button>
-            <button onclick="whiddenwindow('toolwindow');openwindow('helplitewindow')" value="forum" id="forumbutton">帮助(Lite)</button>
+            <button onclick="hiddenwindow('toolwindow');openwindow('helplitewindow')" value="help" id="forumbutton">帮助(Lite)</button>
         </div>
         <div id="emotewindow" class="window">
             <span id="ew-exit" class="exit-button" onclick="hiddenwindow('emotewindow')" title="关闭">X</span>
