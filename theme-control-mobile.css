@@ -144,6 +144,9 @@
         width: 80%;
         height:5%;
     }
+    #iewindow{
+        display:none;
+    }
     /* 服务器地址提示 */
     #tips-serversite{
         padding-left:40px;

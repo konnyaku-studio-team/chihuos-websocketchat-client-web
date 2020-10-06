@@ -7,6 +7,7 @@ var checkbox=document.getElementById("checkstorage");
 var username=document.getElementById("username");
 var messagecontrol=document.getElementById("messagecontrol");
 var comp_selected=document.getElementById("select-compversion");
+var comp_select=document.getElementById("select-compversion");
 var base64=new Base64();
 const EMOTE_FILE_CDN="https://cdn.jsdelivr.net/gh/chihuos-wschat-filecdn/emote@master";//目前使用GayHub本人CDN源，以后设置可以调整吧......
 // EMOTE_FILE_CDN以后可以变化
