@@ -1,6 +1,7 @@
 var storage_setting;
 var uname;
 //Element vars.
+var chathistory=document.getElementById("setting-chat-history-enabled");
 var messageinput=document.getElementById("messageinput");
 var serversite=document.getElementById("serversite");
 var checkbox=document.getElementById("checkstorage");
@@ -58,6 +59,7 @@ function clearSettingData(){
 function changeSettingData(){
     console.debug("[debug]["+new Date()+"]运行了changeSettingData函数！");
     localStorage.setItem("setting_comp_version",comp_select.value);
+    localStorage.setItem("setting_chat_history",)
     alert("设置更改成功！");
     location.reload();
 }
@@ -132,6 +134,10 @@ function connectws(){
             if(setting_comp_version=="now"){
                 var realmsgj=JSON.parse(base64.decode(msg.data));
                 var realmsg=realmsgj.text;
+                //XSS
+                realmsg=replaceall(realmsg,"<","&lt;");
+                realmsg=replaceall(realmsg,">","&gt;");
+                //parse emote
                 realmsg=parsemotedata(realmsg,"tv_doge");
                 realmsg=parsemotedata(realmsg,"tv_ll");
                 realmsg=parsemotedata(realmsg,"tv_yx");
@@ -163,9 +169,15 @@ function connectws(){
                 messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说："+parsedmsg;
             }else{
                 if(setting_comp_version=="B2"){
-                    messagecontrol.innerHTML+="<br>"+base64.decode(msg.data);
+                    var realmsg=base64.decode(msg.data);
+                    realmsg=replaceall(realmsg,"<","&lt;");
+                    realmsg=replaceall(realmsg,">","&gt;"); 
+                    messagecontrol.innerHTML+="<br>"+realmsg;
                 }else{
-                    messagecontrol.innerHTML+="<br>"+msg.data;
+                    var realmsg=msg.data;
+                    realmsg=replaceall(realmsg,"<","&lt;");
+                    realmsg=replaceall(realmsg,">","&gt;"); 
+                    messagecontrol.innerHTML+="<br>"+realmsg;
                 }
             }
             // 消息提醒
