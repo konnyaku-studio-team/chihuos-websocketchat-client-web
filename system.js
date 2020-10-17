@@ -2,6 +2,7 @@ var storage_setting;
 var uname;
 //Element vars.
 var chathistory=document.getElementById("setting-chat-history-enabled");
+var chathistorycloud=document.getElementById("setting-chat-history-cloud-enabled");
 var messageinput=document.getElementById("messageinput");
 var serversite=document.getElementById("serversite");
 var checkbox=document.getElementById("checkstorage");
@@ -59,7 +60,8 @@ function clearSettingData(){
 function changeSettingData(){
     console.debug("[debug]["+new Date()+"]运行了changeSettingData函数！");
     localStorage.setItem("setting_comp_version",comp_select.value);
-    localStorage.setItem("setting_chat_history",)
+    localStorage.setItem("setting_chat_history",chathistory.checked);
+    localStorage.setItem("setting_chat_history_cloud",chathistorycloud.checked);
     alert("设置更改成功！");
     location.reload();
 }
