@@ -27,13 +27,22 @@ if(localStorage.getItem("setting_comp_version")==null){
     var setting_comp_version=localStorage.getItem("setting_comp_version");
     comp_selected.value=setting_comp_version;
 }
+if(localStorage.getItem("setting_chat_history"==null)){
+    localStorage.setItem("setting_chat_history",true);
+    localStorage.setItem("chat_history","{}");
+    localStorage.setItem("chat_count",0);
+    //默认开启 
+}
 if(storage_setting){
     if(!(localStorage.getItem("server_address")==null)){
         serversite.value=localStorage.getItem("server_address");
         username.value=localStorage.getItem("username");
         alert("检测到您有服务器和用户名存储，已为您自动填充。");
-    }   
+    } 
+    
 }
+var setting_chat_history=localStorage.getItem("setting_chat_history");
+
 //获取键盘输入（Keys）如果是Enter就是发送
 function getKey(){
     console.debug("[debug]["+new Date()+"]运行了getkey函数！");
@@ -107,6 +116,21 @@ function commitws(){
             "committime":Math.round(new Date().getTime()/1000)
         }
         wss.send(base64.encode(JSON.stringify(jmessage))); 
+        if(setting_chat_history){
+            var history=localStorage.getItem("chat_history");
+            var count=localStorage.getItem("chat_count");
+            // var jhistory=JSON.parse(history);
+            console.log(jhistory);
+            jnhistory={
+                "uname":jmessage.uname,
+                "text":jmessage.text,
+                "committime":jmessage.committime
+            }
+            count++;
+            var njhistory=JSON.stringify(jhistory);
+            localStorage.setItem("chat_history",njhistory);
+            localStorage.setItem("chat_count",count)
+        }
     }else{
         if(setting_comp_version=="B2"){
             wss.send(base64.encode(commituname+"在"+commitLocalTime+"说："+sendMsg));

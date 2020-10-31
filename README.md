@@ -2,6 +2,12 @@
 
 仅仅是一个基于Websocket的聊天软件
 
+# 遇到技术问题了，更新可能有点缓慢
+
+# TODO
+
+聊天记录存储（__JSON出问题__）（技术问题）
+
 __文档__ 
 
 [https://docs.cwchat.top/](https://docs.cwchat.top/)
