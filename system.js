@@ -29,8 +29,8 @@ if(localStorage.getItem("setting_comp_version")==null){
 }
 if(localStorage.getItem("setting_chat_history"==null)){
     localStorage.setItem("setting_chat_history",true);
-    localStorage.setItem("chat_history","{}");
-    localStorage.setItem("chat_count",0);
+    localStorage.setItem("chat_history","[]");
+    localStorage.setItem("chat_count",1);
     //默认开启 
 }
 if(storage_setting){
@@ -119,9 +119,13 @@ function commitws(){
         if(setting_chat_history){
             var history=localStorage.getItem("chat_history");
             var count=localStorage.getItem("chat_count");
-            // var jhistory=JSON.parse(history);
+            var jhistory=JSON.parse(history);
+            // console.log(typeof jhistory);
+            jhistory=jhistory.toArray();
+            jhistory.length=count;
+
             console.log(jhistory);
-            jnhistory={
+            jhistory[count]={
                 "uname":jmessage.uname,
                 "text":jmessage.text,
                 "committime":jmessage.committime
