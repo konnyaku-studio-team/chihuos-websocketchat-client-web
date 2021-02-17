@@ -29,8 +29,7 @@ if(localStorage.getItem("setting_comp_version")==null){
 }
 if(localStorage.getItem("setting_chat_history"==null)){
     localStorage.setItem("setting_chat_history",true);
-    localStorage.setItem("chat_history","[]");
-    localStorage.setItem("chat_count",1);
+    localStorage.setItem("chat_history","");
     //默认开启 
 }
 if(storage_setting){
@@ -116,25 +115,6 @@ function commitws(){
             "committime":Math.round(new Date().getTime()/1000)
         }
         wss.send(base64.encode(JSON.stringify(jmessage))); 
-        if(setting_chat_history){
-            var history=localStorage.getItem("chat_history");
-            var count=localStorage.getItem("chat_count");
-            var jhistory=JSON.parse(history);
-            // console.log(typeof jhistory);
-            jhistory=jhistory.toArray();
-            jhistory.length=count;
-
-            console.log(jhistory);
-            jhistory[count]={
-                "uname":jmessage.uname,
-                "text":jmessage.text,
-                "committime":jmessage.committime
-            }
-            count++;
-            var njhistory=JSON.stringify(jhistory);
-            localStorage.setItem("chat_history",njhistory);
-            localStorage.setItem("chat_count",count)
-        }
     }else{
         if(setting_comp_version=="B2"){
             wss.send(base64.encode(commituname+"在"+commitLocalTime+"说："+sendMsg));
@@ -161,6 +141,11 @@ function connectws(){
         alert("连接成功！");
         wss.onmessage=function(msg){
             console.debug("[debug]["+new Date()+"]接收到了ws内容！内容："+msg.data);
+            if(setting_chat_history){
+                var history=localStorage.getItem("chat_history");
+                history=history+msg.data+"$";
+                localStorage.setItem("chat_history",history);
+            }
             if(setting_comp_version=="now"){
                 var realmsgj=JSON.parse(base64.decode(msg.data));
                 var realmsg=realmsgj.text;
@@ -235,6 +220,5 @@ function connectws(){
     var mask=document.getElementById("mask");
     connectwindow.style.display="none";
     mask.style.display="none";
-    console.log(msg.data);
     }    
 }
