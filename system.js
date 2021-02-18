@@ -1,6 +1,7 @@
 var storage_setting;
 var uname;
 //Element vars.
+// alert(sha1("Hello World!"));
 var chathistory=document.getElementById("setting-chat-history-enabled");
 var chathistorycloud=document.getElementById("setting-chat-history-cloud-enabled");
 var messageinput=document.getElementById("messageinput");
@@ -154,6 +155,13 @@ function changeSettingData(){
 function addEmote(emotename){
     console.debug("[debug]["+new Date()+"]运行了addEmote函数！");
     messageinput.value+="{$emote:"+emotename+":etome$}";
+}
+function clearhistory(){
+    if(confirm("你真的想要清除聊天记录吗？")){
+        localStorage.setItem("chat_history","");
+    }else{
+        alert("操作已经被用户取消。");
+    }
 }
 function commitws(){
     console.debug("[debug]["+new Date()+"]运行了commitws函数！");
