@@ -2,7 +2,8 @@
     <head>
         <meta charset="utf8">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-        <link  rel="stylesheet" href="theme-control.css">
+        <link  rel="stylesheet" href="theme-control-desktop.css">
+        <link  rel="stylesheet" href="theme-control-mobile.css">
         <script src="function.js" defer></script>
         <script src="theme-control.js" defer></script>
         <script src="system.js" defer></script>
@@ -13,11 +14,7 @@
         <div id="iewindow" class="window">
             <h1 id="ie-reject">你是IE浏览器！</h1>
             <h1 id="ie-reject-desc">对不起，本页面不支持使用Internet Explorer(IE)进行浏览。请您更换Google Chrome,Firefox或者其他现代浏览器</h1>
-        </div>
-        <div id="mobwindow" class="window">
-            <h2 id="mob-reject">你是移动端浏览器！</h2>
-            <h2 id="mob-reject-desc">对不起，由于移动端浏览器不支持JavaScript连接WebSocket，请您使用电脑访问。<br>如果您是电脑或者是Chrome等Webkit手机浏览器？<a href="javascript:hiddenwindow('mobwindow')">点我</a></h2>
-        </div>          
+        </div>   
         <div id="connectwindow" class="window">
             <div id="serversettings">
                 <span id="ss-exit" class="exit-button" onclick="hiddenwindow('connectwindow')" title="关闭">X</span>
@@ -43,8 +40,8 @@
             <img id="about-cwcimage" alt="cwc-logo" title="cwc-logo" src="cwc-logo.png">
             <h2 id="about-softtitle-en">Chihuo's Websocket Chat</h2>
             <h3 id="about-softtitle-cn">赤火的网络套接字聊天程序</h3>
-            <h3 id="about-version">版本:V0.0.2</h3>
-            <h4 id="about-version-desc">更新日期:2020年8月24日</h4>
+            <h3 id="about-version">版本:V0.0.3(EU20210218b)</h3>
+            <h4 id="about-version-desc">更新日期:2021年2月18日</h4>
             <div id="github"><a href="https://github.com/konnyaku-studio-team/chihuos-websocketchat-client-web/">在GitHub上开源：Fork，Star我！</a></div>
             <div id="author">作者:chihuo2104</div>
             <div id="github-ch"><a href="https://github.com/chihuo2104/">GitHub账号</a></div>
@@ -56,10 +53,16 @@
             <h3 id="setting-comp-jrx">适配版本
                 <select name="version" id="select-compversion">
                     <option value="now" id="select-compversion-now">目前版本（请到关于查看版本号）</option>
-                    <option value="B2" id="select-comperversion-b2">V0.0.2 Beta及以前版本（取消JSON构造）(受影响的版本：EU20200730a-EU20200823a)</option>
-                    <option value="A1" id="select-comperversion-a1">V0.0.1 Alpha及以前版本（取消JSON构造与base64编码加密）(受影响的版本：EU20200723a-EU20200730a)</option>
+                    <option value="B3" id="select-compversion-b3">V0.0.2 Beta-V0.0.3 Beta(受影响的版本：EU20200730a-EU20210217b)</option>
+                    <option value="B2" id="select-compversion-b2">V0.0.1 Alpha-V0.0.2 Beta(受影响的版本：EU20200730a-EU20200823a)</option>
+                    <option value="A1" id="select-compversion-a1">V0.0.1 Alpha及以前版本(受影响的版本：EU20200723a-EU20200730a)</option>
                 </select>
+                注意！如果选择以前的版本，安全性功能将不起作用！
             </h3>
+            <h2 id="setting-chat-history">聊天记录&nbsp;<!--<small style="color:#FF0000;">实验性！</small>--></h2>
+            <h3 id="setting-chat-history-desc"><input type="checkbox" id="setting-chat-history-enabled">保存聊天记录在本地<h3>
+            <h3 id="setting-chat-history-cloud"><input type="checkbox" id="setting-chat-history-cloud-enabled">保存聊天记录在云端</h3>
+            <h3 id="setting-chat-clear"><input type="button" id="setting-chat-history-clear" onclick="clearhistory()" value="清除聊天记录"></h3>
             <div id="setting-submit-button-out" class="t-center"><button id="setting-submit-button" onclick="changeSettingData()">更改</button><button id="setting-clear-button" onclick="clearSettingData()">清除数据</button></div>
         </div>
         <div id="toolwindow" class="window">
@@ -71,7 +74,7 @@
             <button onclick="window.open('https://cwchat.top/','_blank')" value="main" id="mainbutton">访问主站</button>
             <button onclick="window.open('https://docs.cwchat.top/','_blank')" value="docs" id="docsbutton">访问文档</button>
             <button onclick="window.open('https://forum.cwchat.top/','_blank')" value="forum" id="forumbutton">访问论坛</button>
-            <button onclick="whiddenwindow('toolwindow');openwindow('helplitewindow')" value="forum" id="forumbutton">帮助(Lite)</button>
+            <button onclick="hiddenwindow('toolwindow');openwindow('helplitewindow')" value="help" id="forumbutton">帮助(Lite)</button>
         </div>
         <div id="emotewindow" class="window">
             <span id="ew-exit" class="exit-button" onclick="hiddenwindow('emotewindow')" title="关闭">X</span>
@@ -144,14 +147,5 @@
                 </span>
             </div>
         </div>
-        <script>
-            if(document.body.clientWidth<480){
-                var connectwindow=document.getElementById("connectwindow");
-                connectwindow.style.display="none";
-                var mobwindow=document.getElementById("mobwindow");
-                var mask=document.getElementById("mask");
-                mobwindow.style.display="block";
-            } 
-        </script>
         </body>
 </html>
