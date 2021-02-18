@@ -51,7 +51,11 @@ function parsemotedata(realmsg,ename){
 function load_history(message){
     console.debug("[debug]["+new Date()+"]运行了load_history函数！");
     if(setting_comp_version=="now"){
-        var realmsgj=JSON.parse(base64.decode(message));
+        var realmsgj2=JSON.parse(base64.decode(message));
+        if(realmsgj2.checksum!=sha1(sha1(realmsgj2.msg)+realmsgj2.msg)){
+            alert("校验失败！信息有可能被篡改，请注意甄别信息内容！");
+        }
+        var realmsgj=JSON.parse(base64.decode(realmsgj2.msg));
         var realmsg=realmsgj.text;
         //XSS
         realmsg=replaceall(realmsg,"<","&lt;");
@@ -93,10 +97,48 @@ function load_history(message){
             realmsg=replaceall(realmsg,">","&gt;"); 
             messagecontrol.innerHTML+="<br>"+realmsg;
         }else{
-            var realmsg=message;
-            realmsg=replaceall(realmsg,"<","&lt;");
-            realmsg=replaceall(realmsg,">","&gt;"); 
-            messagecontrol.innerHTML+="<br>"+realmsg;
+            if(setting_comp_version=="B3"){
+                var realmsgj=JSON.parse(base64.decode(message));
+                var realmsg=realmsgj.text;
+                //XSS
+                realmsg=replaceall(realmsg,"<","&lt;");
+                realmsg=replaceall(realmsg,">","&gt;");
+                //parse emote可能以后会搞个好的
+                realmsg=parsemotedata(realmsg,"tv_doge");
+                realmsg=parsemotedata(realmsg,"tv_ll");
+                realmsg=parsemotedata(realmsg,"tv_yx");
+                realmsg=parsemotedata(realmsg,"tv_angry");
+                realmsg=parsemotedata(realmsg,"tv_cute");
+                realmsg=parsemotedata(realmsg,"tv_dk");
+                realmsg=parsemotedata(realmsg,"tv_dz");
+                realmsg=parsemotedata(realmsg,"tv_hx");
+                realmsg=parsemotedata(realmsg,"tv_by");
+                realmsg=parsemotedata(realmsg,"tv_dl");
+                realmsg=parsemotedata(realmsg,"tv_fn");
+                realmsg=parsemotedata(realmsg,"tv_gl");
+                realmsg=parsemotedata(realmsg,"tv_lh");
+                realmsg=parsemotedata(realmsg,"tv_lhcq");
+                realmsg=parsemotedata(realmsg,"tv_xyx");
+                realmsg=parsemotedata(realmsg,"tv_mdkd");
+                realmsg=parsemotedata(realmsg,"bili_wx");
+                realmsg=parsemotedata(realmsg,"bili_cg");
+                realmsg=parsemotedata(realmsg,"bili_dcall");
+                realmsg=parsemotedata(realmsg,"bili_dk");
+                realmsg=parsemotedata(realmsg,"bili_doge");
+                realmsg=parsemotedata(realmsg,"bili_hj");
+                realmsg=parsemotedata(realmsg,"bili_ma");
+                realmsg=parsemotedata(realmsg,"bili_xiao");
+                realmsg=parsemotedata(realmsg,"bili_xk");
+                var parsedmsg=realmsg;
+                var unixTimestamp = new Date(realmsgj.committime * 1000)
+                var commitLocalTime = unixTimestamp.toLocaleString();
+                messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说："+parsedmsg;
+            }else{
+                var realmsg=message;
+                realmsg=replaceall(realmsg,"<","&lt;");
+                realmsg=replaceall(realmsg,">","&gt;"); 
+                messagecontrol.innerHTML+="<br>"+realmsg;
+            }
         }
 }}//不知道哪里出了点问题，请大佬指点一下（为什么要两个括号）
 //拿来加载聊天记录的......（但是存储只能存你在与他人的聊天哦~实在不行等下开发个云端存储？？因为是端对端的，服务器端的话得搞个Express？？）
@@ -159,6 +201,7 @@ function addEmote(emotename){
 function clearhistory(){
     if(confirm("你真的想要清除聊天记录吗？")){
         localStorage.setItem("chat_history","");
+        alert("聊天记录清除成功！");
     }else{
         alert("操作已经被用户取消。");
     }
@@ -187,12 +230,22 @@ function commitws(){
             "text":sendMsg,
             "committime":Math.round(new Date().getTime()/1000)
         }
-        wss.send(base64.encode(JSON.stringify(jmessage))); 
+        var newj={"checksum":sha1(sha1(base64.encode(JSON.stringify(jmessage)))+base64.encode(JSON.stringify(jmessage))),"msg":base64.encode(JSON.stringify(jmessage))};
+        wss.send(base64.encode(JSON.stringify(newj))); 
     }else{
         if(setting_comp_version=="B2"){
             wss.send(base64.encode(commituname+"在"+commitLocalTime+"说："+sendMsg));
         }else{
-            wss.send(commituname+"在"+commitLocalTime+"说："+sendMsg);
+            if(setting_comp_version=="A1"){
+                wss.send(base64.encode(commituname+"在"+commitLocalTime+"说："+sendMsg));
+            }else{
+                jmessage={
+                    "uname":commituname,
+                    "text":sendMsg,
+                    "committime":Math.round(new Date().getTime()/1000)
+                }
+                wss.send(base64.encode(JSON.stringify(jmessage))); 
+            }
         }
     }
     messageinput.value="";
@@ -220,7 +273,11 @@ function connectws(){
                 localStorage.setItem("chat_history",history);
             }
             if(setting_comp_version=="now"){
-                var realmsgj=JSON.parse(base64.decode(msg.data));
+                var realmsgj2=JSON.parse(base64.decode(msg.data));
+                if(realmsgj2.checksum!=sha1(sha1(realmsgj2.msg)+realmsgj2.msg)){
+                    alert("校验失败！信息有可能被篡改，请注意甄别信息内容！");
+                }
+                var realmsgj=JSON.parse(base64.decode(realmsgj2.msg));
                 var realmsg=realmsgj.text;
                 //XSS
                 realmsg=replaceall(realmsg,"<","&lt;");
@@ -262,10 +319,49 @@ function connectws(){
                     realmsg=replaceall(realmsg,">","&gt;"); 
                     messagecontrol.innerHTML+="<br>"+realmsg;
                 }else{
-                    var realmsg=msg.data;
-                    realmsg=replaceall(realmsg,"<","&lt;");
-                    realmsg=replaceall(realmsg,">","&gt;"); 
-                    messagecontrol.innerHTML+="<br>"+realmsg;
+                    if(setting_comp_version=="B3"){
+                        var realmsgj=JSON.parse(base64.decode(msg.data));
+                        var realmsg=realmsgj.text;
+                        //XSS
+                        realmsg=replaceall(realmsg,"<","&lt;");
+                        realmsg=replaceall(realmsg,">","&gt;");
+                        //parse emote
+                        realmsg=parsemotedata(realmsg,"tv_doge");
+                        realmsg=parsemotedata(realmsg,"tv_ll");
+                        realmsg=parsemotedata(realmsg,"tv_yx");
+                        realmsg=parsemotedata(realmsg,"tv_angry");
+                        realmsg=parsemotedata(realmsg,"tv_cute");
+                        realmsg=parsemotedata(realmsg,"tv_dk");
+                        realmsg=parsemotedata(realmsg,"tv_dz");
+                        realmsg=parsemotedata(realmsg,"tv_hx");
+                        realmsg=parsemotedata(realmsg,"tv_by");
+                        realmsg=parsemotedata(realmsg,"tv_dl");
+                        realmsg=parsemotedata(realmsg,"tv_fn");
+                        realmsg=parsemotedata(realmsg,"tv_gl");
+                        realmsg=parsemotedata(realmsg,"tv_lh");
+                        realmsg=parsemotedata(realmsg,"tv_lhcq");
+                        realmsg=parsemotedata(realmsg,"tv_xyx");
+                        realmsg=parsemotedata(realmsg,"tv_mdkd");
+                        realmsg=parsemotedata(realmsg,"bili_wx");
+                        realmsg=parsemotedata(realmsg,"bili_cg");
+                        realmsg=parsemotedata(realmsg,"bili_dcall");
+                        realmsg=parsemotedata(realmsg,"bili_dk");
+                        realmsg=parsemotedata(realmsg,"bili_doge");
+                        realmsg=parsemotedata(realmsg,"bili_hj");
+                        realmsg=parsemotedata(realmsg,"bili_ma");
+                        realmsg=parsemotedata(realmsg,"bili_xiao");
+                        realmsg=parsemotedata(realmsg,"bili_xk");
+                        var parsedmsg=realmsg;
+                        var unixTimestamp = new Date(realmsgj.committime * 1000)
+                        var commitLocalTime = unixTimestamp.toLocaleString();
+                        messagecontrol.innerHTML+="<br>"+realmsgj.uname+"在"+commitLocalTime+"说："+parsedmsg;
+                    }else{
+                        var realmsg=msg.data;
+                        realmsg=replaceall(realmsg,"<","&lt;");
+                        realmsg=replaceall(realmsg,">","&gt;"); 
+                        messagecontrol.innerHTML+="<br>"+realmsg;                        
+                    }
+
                 }
             }
             // 消息提醒
