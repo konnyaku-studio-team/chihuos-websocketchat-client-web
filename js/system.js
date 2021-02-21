@@ -1,17 +1,23 @@
-var storage_setting;
+var connection;
 var uname;
 //Element vars.
 // alert(sha1("Hello World!"));
 var chathistory=document.getElementById("setting-chat-history-enabled");
 var chathistorycloud=document.getElementById("setting-chat-history-cloud-enabled");
-var messageinput=document.getElementById("messageinput");
 var serversite=document.getElementById("serversite");
 var checkbox=document.getElementById("checkstorage");
 var username=document.getElementById("username");
-var messagecontrol=document.getElementById("messagecontrol");
+var messageinput=document.getElementById("messageinput");
 var comp_selected=document.getElementById("select-compversion");
 var comp_select=document.getElementById("select-compversion");
-// EMOTE_FILE_CDN以后可以变化
+//获取键盘输入（Keys）如果是Enter就是发送
+function getKey(){
+    console.debug("[debug]["+new Date()+"]运行了getkey函数！");
+    if(event.keyCode==13){
+        commitws();
+    }
+}
+//LS存储设置
 if(localStorage.getItem("localstorage_settings")==null){
     localStorage.setItem("localstorage_settings",false);
 }else{
@@ -33,26 +39,11 @@ if(localStorage.getItem("setting_chat_history")==null){
     localStorage.setItem("chat_history","");
     //默认开启 
 }
-//ReplaceAll函数
-function replaceall(str,f,r){
-    while(str.indexOf(f)!=-1){
-        str=str.replace(f,r);
-    }
-    return str;
-}
-//解析emote（跳到前面去了QAQ）
-function parsemotedata(realmsg,ename){
-    realmsg=replaceall(realmsg,"{$emote:"+ename+":etome$}","<img src=\""+EMOTE_FILE_CDN+"/"+ename+".png\" class=\"emote-show-text\">");
-    return realmsg;
-}
 //拿来重复神经病工作的.....
 function load_history(message){
     console.debug("[debug]["+new Date()+"]运行了load_history函数！");
     if(setting_comp_version=="now"){
         var realmsgj2=JSON.parse(base64.decode(message));
-        if(realmsgj2.checksum!=sha1(sha1(realmsgj2.msg)+realmsgj2.msg)){
-            alert("校验失败！信息有可能被篡改，请注意甄别信息内容！");
-        }
         var realmsgj=JSON.parse(base64.decode(realmsgj2.msg));
         var realmsg=realmsgj.text;
         //XSS
@@ -200,11 +191,12 @@ function clearhistory(){
 }
 function commitws(){
     console.debug("[debug]["+new Date()+"]运行了commitws函数！");
+    connection.send(messageinput.value);
 }
 //连接ws
 function connectws(){   
     console.debug("[debug]["+new Date()+"]运行了connectws函数！");
     uname=username.value;
-    var connection=new ws(serversite.value,uname);
+    connection=new ws(serversite.value,uname);
     connection.connect();
 }
